@@ -17,10 +17,10 @@ namespace Tresana.Web.Api.Controllers
     {
         private readonly IUserService userService;
 
-        public UsersController()
-        {
-            userService = new UserService();
-        }
+        //public UsersController()
+        //{
+        //    userService = new UserService();
+        //}
 
         public UsersController(IUserService userService)
         {

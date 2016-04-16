@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using Tresana.Data.Entities;
 using Tresana.Data.Repository;
@@ -11,11 +12,6 @@ namespace Tresana.Web.Services
     {
 
         private readonly IUnitOfWork unitOfWork;
-
-        public TaskService()
-        {
-            unitOfWork = new UnitOfWork();
-        }
 
         public TaskService(IUnitOfWork unitOfWork)
         {
@@ -59,6 +55,16 @@ namespace Tresana.Web.Services
         {
             if (ExistsTask(taskId))
             {
+                Task existingTask = unitOfWork.TaskRepository.GetByID(taskId);
+                existingTask.Name = task.Name;
+                existingTask.Description = task.Description;
+                existingTask.Priority = task.Priority;
+                existingTask.Estimation = task.Estimation;
+                existingTask.DueDate = task.DueDate;
+                existingTask.FinishDate = task.FinishDate;
+                existingTask.ResponsibleUsers = task.ResponsibleUsers;
+                existingTask.StartDate = task.StartDate;
+                existingTask.Status = task.Status;
                 unitOfWork.TaskRepository.Update(task);
                 unitOfWork.Save();
                 return true;

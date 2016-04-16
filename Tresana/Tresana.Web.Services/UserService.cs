@@ -13,10 +13,10 @@ namespace Tresana.Web.Services
 
         private readonly IUnitOfWork unitOfWork;
 
-        public UserService()
-        {
-            unitOfWork = new UnitOfWork();
-        }
+        //public UserService()
+        //{
+        //    unitOfWork = new UnitOfWork();
+        //}
 
         public UserService(IUnitOfWork unitOfWork)
         {
@@ -56,7 +56,12 @@ namespace Tresana.Web.Services
         {
             if (ExistsUser(userId))
             {
-                unitOfWork.UserRepository.Update(user);
+                User userEntity = unitOfWork.UserRepository.GetByID(userId);
+                userEntity.LastName = user.LastName;
+                userEntity.Name = user.Name;
+                userEntity.Mail = user.Mail;
+                userEntity.UserName = user.UserName;
+                unitOfWork.UserRepository.Update(userEntity);
                 unitOfWork.Save();
                 return true;
             }

@@ -13,12 +13,6 @@ namespace Tresana.Data.Repository
         private GenericRepository<User> userRepository;
         private GenericRepository<Task> taskRepository;
 
-
-        public UnitOfWork()
-        {
-            context = new TresanaContext();
-        }
-
         public UnitOfWork(TresanaContext tresanaContext)
         {
             context = tresanaContext;

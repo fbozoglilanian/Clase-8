@@ -17,11 +17,6 @@ namespace Tresana.Web.Api.Controllers
     {
         private readonly ITaskService taskService;
 
-        public TasksController()
-        {
-            taskService = new TaskService();
-        }
-
         public TasksController(ITaskService service)
         {
             taskService = service;
