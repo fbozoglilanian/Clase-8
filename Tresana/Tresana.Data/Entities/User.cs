@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Tresana.Data.Entities
 {
@@ -15,6 +14,7 @@ namespace Tresana.Data.Entities
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
+        public virtual IEnumerable<Task> Tasks { get; set; }
 
         public User()
         {

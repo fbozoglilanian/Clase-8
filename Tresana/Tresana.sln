@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tresana.Data.Repository", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tresana.Web.Services", "Tresana.Web.Services\Tresana.Web.Services.csproj", "{4ADCB9DE-CA0D-45E5-AEF3-60F11EE9478B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tresana.Web.Api.Tests", "Tresana.Web.Api.Tests\Tresana.Web.Api.Tests.csproj", "{13B4B88C-BF1B-4C7E-950D-5D392B1DA51F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tresana.Web.Services.Tests", "Tresana.Web.Services.Tests\Tresana.Web.Services.Tests.csproj", "{3234FEBF-FC96-4B5C-ABD8-CEF60BD8D2C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tresana.Data.Repository.Tests", "Tresana.Data.DataAccess.Tests\Tresana.Data.Repository.Tests.csproj", "{7074A291-EAD2-4299-AC42-62C4CD1B5638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{4ADCB9DE-CA0D-45E5-AEF3-60F11EE9478B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ADCB9DE-CA0D-45E5-AEF3-60F11EE9478B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ADCB9DE-CA0D-45E5-AEF3-60F11EE9478B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B4B88C-BF1B-4C7E-950D-5D392B1DA51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B4B88C-BF1B-4C7E-950D-5D392B1DA51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B4B88C-BF1B-4C7E-950D-5D392B1DA51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B4B88C-BF1B-4C7E-950D-5D392B1DA51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3234FEBF-FC96-4B5C-ABD8-CEF60BD8D2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3234FEBF-FC96-4B5C-ABD8-CEF60BD8D2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3234FEBF-FC96-4B5C-ABD8-CEF60BD8D2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3234FEBF-FC96-4B5C-ABD8-CEF60BD8D2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7074A291-EAD2-4299-AC42-62C4CD1B5638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7074A291-EAD2-4299-AC42-62C4CD1B5638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7074A291-EAD2-4299-AC42-62C4CD1B5638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7074A291-EAD2-4299-AC42-62C4CD1B5638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

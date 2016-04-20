@@ -43,7 +43,7 @@ namespace Tresana.Web.Services
 
         public IEnumerable<User> GetAllUsers()
         {
-            return unitOfWork.UserRepository.Get();
+            return unitOfWork.UserRepository.Get(null, null, null);
         }
 
         public User GetUserById(int userId)
