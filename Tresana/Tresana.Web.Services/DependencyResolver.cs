@@ -17,7 +17,7 @@ namespace Tresana.Web.Services
         {
             registerComponent.RegisterType<IUserService, UserService>();
             registerComponent.RegisterType<ITaskService, TaskService>();
-            registerComponent.RegisterTypeWithControlledLifeTime<IUnitOfWork,UnitOfWork>();
+            //registerComponent.RegisterTypeWithControlledLifeTime<IUnitOfWork,UnitOfWork>();
 
         }
     }

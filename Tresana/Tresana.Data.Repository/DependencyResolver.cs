@@ -13,7 +13,7 @@ namespace Tresana.Data.Repository
     {
         public void SetUp(IRegisterComponent registerComponent)
         {
-            registerComponent.RegisterType<IUnitOfWork, UnitOfWork>();
+            registerComponent.RegisterTypeWithControlledLifeTime<IUnitOfWork, UnitOfWork>();
         }
     }
 }

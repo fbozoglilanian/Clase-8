@@ -14,7 +14,7 @@ namespace Tresana.Web.Api
         {
             var container = new UnityContainer();
 
-            ComponentLoader.LoadContainer(container, ".\\bin", "Tresana.Web.*.dll");
+            ComponentLoader.LoadContainer(container, ".\\bin", "Tresana.*.dll");
 
             GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
             // Web API routes
