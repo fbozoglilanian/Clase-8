@@ -182,3 +182,215 @@ public void UpdateExistingUser()
 ##Ejercicio: 
 
 Probar ahora como funciona el UpdateUser cuando no existe el usuario
+
+#Utilizando Reflection
+
+Para poder invertir las dependencias de nuestra api, utilizaremos reflection. Además, extraeremos la responsabilidad de resolver las dependencias a un componente externo.
+
+Para ello, nos creamos un nuevo proyecto, Tresana.Resolver, y en él instalamos los siguientes paquetes nuget:
+- Microsoft.AspNet.WebApi.Core
+- Unity
+- Unity.WebApi
+Además, debemos agregar la referencia a System.ComponentModel.Composition. Para ello, seleccionamos con botón derecho el proyecto Resolver, y seleccionamos Add Reference. Una vez allí, buscamos esta referencia entre los Assemblies (ensamblados).
+
+Una vez instaladas las referencias, podemos eliminar la carpeta de App_start del proyecto, y su contenido.
+
+Ahora, debemos crear 2 interfaces y una clase. Comencemos por las interfaces.
+
+IRegisterComponent:
+
+```C#
+
+namespace Tresana.Resolver
+{
+    public interface IRegisterComponent
+    {
+        void RegisterType<TFrom, TTo>(bool withInterception = false) where TTo : TFrom;
+        void RegisterTypeWithControlledLifeTime<TFrom, TTo>(bool withInterception = false) where TTo : TFrom;
+    }
+}
+```
+
+IComponent:
+
+```C#
+
+namespace Tresana.Resolver
+{
+    public interface IComponent
+    {
+        void SetUp(IRegisterComponent registerComponent);
+    }
+}
+
+```
+
+
+Y luego la clase ComponentResolver
+
+```C#
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+
+namespace Tresana.Resolver
+{
+    public class ComponentLoader
+    {
+        public static void LoadContainer(IUnityContainer container, string path, string pattern)
+        {
+            var dirCat = new DirectoryCatalog(path, pattern);
+            var importDef = BuildImportDefinition();
+            try
+            {
+                using (var aggregateCatalog = new AggregateCatalog())
+                {
+                    aggregateCatalog.Catalogs.Add(dirCat);
+
+                    using (var componsitionContainer = new CompositionContainer(aggregateCatalog))
+                    {
+                        IEnumerable<Export> exports = componsitionContainer.GetExports(importDef);
+
+                        IEnumerable<IComponent> modules = exports.Select(export => export.Value as IComponent).Where(m => m != null);
+
+                        var registerComponent = new RegisterComponent(container);
+                        foreach (IComponent module in modules)
+                        {
+                            module.SetUp(registerComponent);
+                        }
+                    }
+                }
+            }
+            catch (ReflectionTypeLoadException typeLoadException)
+            {
+                var builder = new StringBuilder();
+                foreach (Exception loaderException in typeLoadException.LoaderExceptions)
+                {
+                    builder.AppendFormat("{0}\n", loaderException.Message);
+                }
+
+                throw new TypeLoadException(builder.ToString(), typeLoadException);
+            }
+        }
+
+        private static ImportDefinition BuildImportDefinition()
+        {
+            return new ImportDefinition(
+                def => true, typeof(IComponent).FullName, ImportCardinality.ZeroOrMore, false, false);
+        }
+    }
+
+    internal class RegisterComponent : IRegisterComponent
+    {
+        private readonly IUnityContainer _container;
+
+        public RegisterComponent(IUnityContainer container)
+        {
+            this._container = container;
+            //Register interception behaviour if any
+        }
+
+        public void RegisterType<TFrom, TTo>(bool withInterception = false) where TTo : TFrom
+        {
+            if (withInterception)
+            {
+                //register with interception
+            }
+            else
+            {
+                this._container.RegisterType<TFrom, TTo>();
+            }
+        }
+
+        public void RegisterTypeWithControlledLifeTime<TFrom, TTo>(bool withInterception = false) where TTo : TFrom
+        {
+            this._container.RegisterType<TFrom, TTo>(new ContainerControlledLifetimeManager());
+        }
+    }
+}
+```
+
+Ahora, nuestro proyecto puede registrar tipos a través de reflection.
+
+Agreguemos entonces la resolución de dependencias en los servicios.
+
+Agregamos la clase DependencyResolver en ese proyecto, que implementa una de las interfaces realizadas previamente:
+
+```C#
+
+using System.ComponentModel.Composition;
+using Tresana.Resolver;
+
+namespace Tresana.Web.Services
+{
+    [Export(typeof(IComponent))]
+    public class DependencyResolver:IComponent
+    {
+        public void SetUp(IRegisterComponent registerComponent)
+        {
+            registerComponent.RegisterType<IUserService, UserService>();
+            registerComponent.RegisterType<ITaskService, TaskService>();
+            registerComponent.RegisterTypeWithControlledLifeTime<IUnitOfWork,UnitOfWork>();
+
+        }
+    }
+}
+
+```
+
+Ahora lo mismo para UnitOfWork:
+
+```C#
+
+using System.ComponentModel.Composition;
+using Tresana.Resolver;
+
+namespace Tresana.Data.Repository
+{
+    [Export(typeof(IComponent))]
+    public class DependencyResolver:IComponent
+    {
+        public void SetUp(IRegisterComponent registerComponent)
+        {
+            registerComponent.RegisterType<IUnitOfWork, UnitOfWork>();
+        }
+    }
+}
+
+```
+
+Ya tenemos el 90% del trabajo pronto. 
+
+Hagamos el resto:
+
+En WebApiConfig.cs, cambiamos el método Register para que quede de la siguiente manera:
+
+```C#
+
+public static void Register(HttpConfiguration config)
+{
+    var container = new UnityContainer();
+
+    ComponentLoader.LoadContainer(container, ".\\bin", "Tresana.Web.*.dll");
+
+    GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
+    // Web API routes
+    config.MapHttpAttributeRoutes();
+
+    config.Routes.MapHttpRoute(
+        name: "DefaultApi",
+        routeTemplate: "api/{controller}/{id}",
+        defaults: new { id = RouteParameter.Optional }
+    );
+}
+
+```
+
+Y de esta manera, podemos quitar la referencia al proyecto de Repository desde WebApi, habiendo logrado invertir las dependencias.
