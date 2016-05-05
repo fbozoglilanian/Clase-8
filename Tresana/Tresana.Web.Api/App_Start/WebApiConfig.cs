@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
-using Tresana.Data.Repository;
+using Tresana.Resolver;
 using Tresana.Web.Services;
 
 namespace Tresana.Web.Api
@@ -13,11 +13,10 @@ namespace Tresana.Web.Api
         public static void Register(HttpConfiguration config)
         {
             var container = new UnityContainer();
-            //container.RegisterType<ITaskService, TaskService>(new HierarchicalLifetimeManager());
-            container.RegisterType<IUserService, UserService>().RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
-            container.RegisterType<ITaskService, TaskService>().RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
-            config.DependencyResolver = new UnityResolver(container);
 
+            ComponentLoader.LoadContainer(container, ".\\bin", "Tresana.Web.*.dll");
+
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
             // Web API routes
             config.MapHttpAttributeRoutes();
 

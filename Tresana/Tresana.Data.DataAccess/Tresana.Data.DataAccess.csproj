@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201604180511333_changedDomain.Designer.cs">
       <DependentUpon>201604180511333_changedDomain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604252347156_init21.cs" />
+    <Compile Include="Migrations\201604252347156_init21.Designer.cs">
+      <DependentUpon>201604252347156_init21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TresanaContext.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604180511333_changedDomain.resx">
       <DependentUpon>201604180511333_changedDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604252347156_init21.resx">
+      <DependentUpon>201604252347156_init21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

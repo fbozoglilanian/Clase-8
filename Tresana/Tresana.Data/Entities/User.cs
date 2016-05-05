@@ -14,6 +14,7 @@ namespace Tresana.Data.Entities
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
+        public string Address { get; set; }
         public virtual IEnumerable<Task> Tasks { get; set; }
 
         public User()

@@ -51,7 +51,6 @@ namespace Tresana.Web.Api.Controllers
             {
                 return NotFound();
             }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
 

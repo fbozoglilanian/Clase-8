@@ -19,7 +19,7 @@ namespace Tresana.Web.Services.Tests
             var mockUnitOfWork = new Mock<IUnitOfWork>();
 
             
-            mockUnitOfWork.Setup(un => un.UserRepository.Get(null, null, null));
+            mockUnitOfWork.Setup(un => un.UserRepository.Get(null, null, ""));
 
             IUserService userService = new UserService(mockUnitOfWork.Object);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
@@ -41,7 +42,7 @@ namespace Tresana.Web.Api.Tests
 
             var mockUserService = new Mock<IUserService>();
             mockUserService.Setup(x => x.GetAllUsers()).Returns(allUsers);
-            
+
 
             var controller = new UsersController(mockUserService.Object);
 
@@ -50,6 +51,22 @@ namespace Tresana.Web.Api.Tests
             Assert.NotNull(contentResult);
             Assert.NotNull(contentResult.Content);
             Assert.Same(allUsers, contentResult.Content);
+
+        }
+
+        [Fact]
+        public void UpdateUsersReturnsNoContent()
+        {
+            var mockUserService = new Mock<IUserService>();
+
+            mockUserService.Setup(x => x.UpdateUser(It.IsAny<int>(), It.IsAny<User>())).Returns(true);
+            var controller = new UsersController(mockUserService.Object);
+
+            IHttpActionResult actionResult = controller.PutUser(0, new User() { Id = 0 });
+
+            StatusCodeResult contentResult = Assert.IsType<StatusCodeResult>(actionResult);
+            Assert.NotNull(contentResult);
+            Assert.Equal(contentResult.StatusCode, HttpStatusCode.NoContent);
 
         }
     }
