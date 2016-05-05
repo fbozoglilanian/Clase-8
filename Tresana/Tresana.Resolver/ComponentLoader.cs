@@ -79,7 +79,7 @@ namespace Tresana.Resolver
 
         public void RegisterTypeWithControlledLifeTime<TFrom, TTo>(bool withInterception = false) where TTo : TFrom
         {
-            this._container.RegisterType<TFrom, TTo>(new ContainerControlledLifetimeManager());
+            this._container.RegisterType<TFrom, TTo>(new HierarchicalLifetimeManager());
         }
     }
 }
