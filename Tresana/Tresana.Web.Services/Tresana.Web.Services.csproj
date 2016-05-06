@@ -47,16 +47,13 @@
   <ItemGroup>
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="ITaskService.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tresana.Data.Repository\Tresana.Data.Repository.csproj">
-      <Project>{8ae06652-6ec3-420a-bd17-aaeaf0255bae}</Project>
-      <Name>Tresana.Data.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tresana.Data\Tresana.Data.csproj">
       <Project>{72e0afe4-15c5-46c1-9c77-3fef59811fad}</Project>
       <Name>Tresana.Data</Name>

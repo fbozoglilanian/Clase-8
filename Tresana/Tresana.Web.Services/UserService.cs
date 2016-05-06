@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tresana.Data.Entities;
-using Tresana.Data.Repository;
 
 namespace Tresana.Web.Services
 {
@@ -12,11 +11,7 @@ namespace Tresana.Web.Services
     {
 
         private readonly IUnitOfWork unitOfWork;
-
-        //public UserService()
-        //{
-        //    unitOfWork = new UnitOfWork();
-        //}
+        
 
         public UserService(IUnitOfWork unitOfWork)
         {

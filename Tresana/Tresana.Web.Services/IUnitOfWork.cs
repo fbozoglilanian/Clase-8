@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks;
+using Tresana.Data.Entities;
 
-namespace Tresana.Data.Repository
+namespace Tresana.Web.Services
 {
+    public interface IUnitOfWork : IDisposable
+    {
+        IRepository<User> UserRepository { get; }
+        IRepository<Task> TaskRepository { get; }
+        void Save();
+    }
+
     public interface IRepository<TEntity> where TEntity : class
     {
         IEnumerable<TEntity> Get(
@@ -14,12 +21,11 @@ namespace Tresana.Data.Repository
                 Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
                 string includeProperties = "");
         TEntity GetByID(object id);
-       void Insert(TEntity entityToCreate);
+        void Insert(TEntity entityToCreate);
         void Delete(object id);
         void Delete(TEntity entityToDelete);
         void Update(TEntity entityToUpdate);
 
 
     }
-
 }
