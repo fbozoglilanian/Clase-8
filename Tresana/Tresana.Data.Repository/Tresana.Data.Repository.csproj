@@ -56,8 +56,6 @@
   <ItemGroup>
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
@@ -73,6 +71,10 @@
     <ProjectReference Include="..\Tresana.Resolver\Tresana.Resolver.csproj">
       <Project>{914b8956-75de-4d80-911b-e6aa89d86503}</Project>
       <Name>Tresana.Resolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tresana.Web.Services\Tresana.Web.Services.csproj">
+      <Project>{4adcb9de-ca0d-45e5-aef3-60f11ee9478b}</Project>
+      <Name>Tresana.Web.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Tresana.Data.DataAccess;
 using Tresana.Data.Entities;
+using Tresana.Web.Services;
 
 namespace Tresana.Data.Repository
 {

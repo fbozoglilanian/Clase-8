@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Tresana.Data.Repository;
 using Tresana.Resolver;
 
 namespace Tresana.Web.Services
