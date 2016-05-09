@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace Tresana.Data.Entities
 {
@@ -14,7 +16,11 @@ namespace Tresana.Data.Entities
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
+
+        [JsonIgnore]
         public string Address { get; set; }
+
+            [JsonIgnore]
         public virtual IEnumerable<Task> Tasks { get; set; }
 
         public User()

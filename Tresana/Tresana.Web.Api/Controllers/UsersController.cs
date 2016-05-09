@@ -79,6 +79,15 @@ namespace Tresana.Web.Api.Controllers
             return NotFound();
         }
 
+        [Route("api/users/{id}/tasks")]
+        [HttpGet]
+        public IHttpActionResult GetUsersTasks(int id)
+        {
+            User user = userService.GetUserById(id);
+            IEnumerable<Task> tasks = user.Tasks;
+            return Ok(tasks);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
