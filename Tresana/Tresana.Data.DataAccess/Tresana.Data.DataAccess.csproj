@@ -65,6 +65,22 @@
     <Compile Include="Migrations\201604252347156_init21.Designer.cs">
       <DependentUpon>201604252347156_init21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605100358205_updatedRelation.cs" />
+    <Compile Include="Migrations\201605100358205_updatedRelation.Designer.cs">
+      <DependentUpon>201605100358205_updatedRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605100417431_updatedRelation1.cs" />
+    <Compile Include="Migrations\201605100417431_updatedRelation1.Designer.cs">
+      <DependentUpon>201605100417431_updatedRelation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605100425176_updatedRelation2.cs" />
+    <Compile Include="Migrations\201605100425176_updatedRelation2.Designer.cs">
+      <DependentUpon>201605100425176_updatedRelation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605100430065_testUser.cs" />
+    <Compile Include="Migrations\201605100430065_testUser.Designer.cs">
+      <DependentUpon>201605100430065_testUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TresanaContext.cs" />
@@ -93,6 +109,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604252347156_init21.resx">
       <DependentUpon>201604252347156_init21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605100358205_updatedRelation.resx">
+      <DependentUpon>201605100358205_updatedRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605100417431_updatedRelation1.resx">
+      <DependentUpon>201605100417431_updatedRelation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605100425176_updatedRelation2.resx">
+      <DependentUpon>201605100425176_updatedRelation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605100430065_testUser.resx">
+      <DependentUpon>201605100430065_testUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

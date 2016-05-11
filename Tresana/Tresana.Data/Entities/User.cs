@@ -16,12 +16,9 @@ namespace Tresana.Data.Entities
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
-
-        [JsonIgnore]
         public string Address { get; set; }
-
-            [JsonIgnore]
-        public virtual IEnumerable<Task> Tasks { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Task> Tasks { get; set; }
 
         public User()
         {

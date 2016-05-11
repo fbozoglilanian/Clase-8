@@ -16,10 +16,12 @@ namespace Tresana.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public int Priority { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime FinishDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? FinishDate { get; set; }
         public int? Estimation { get; set; }
-        public virtual List<User> ResponsibleUsers { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<User> ResponsibleUsers { get; set; }
         public String Status { get; set; }
         public User Creator { get; set; }
         public DateTime CreationDate { get; set; }

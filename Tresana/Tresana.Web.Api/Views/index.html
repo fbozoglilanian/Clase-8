@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/app/app.js"></script>
+    <script src="../Scripts/tasks/tasksController.js"></script>
+</head>
+<body ng-app="Tresana">
+<div ng-controller="Tasks.Controller as tasksCtrl">
+    Filter by:
+    <input type="text" ng-model="tasksCtrl.filter"/>
+    Order by:
+    <select ng-model="tasksCtrl.orderBy">
+        <option value="StartDate">Start Date</option>
+        <option value="CreationDate">Creation Date</option>
+    </select>
+    <div ng-repeat="task in tasksCtrl.tasks | filter: tasksCtrl.filter| orderBy: tasksCtrl.orderBy">
+        <h2>Task Name: {{task.Name}}</h2>
+        <p>Description: {{task.Description}}</p>
+        <p>Creation Date: {{tasksCtrl.printDate(task.CreationDate)}}</p>
+        <p>Start Date: {{tasksCtrl.printDate(task.StartDate)}}</p>
+        <p>Due Date: {{tasksCtrl.printDate(task.DueDate)}}</p>
+    </div>
+</div>
+    
+</body>
+</html>
