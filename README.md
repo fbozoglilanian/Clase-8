@@ -32,7 +32,7 @@ Compljidad de manejar el DOM  y la lógica de una aplicación manualmente.
 Este patrón por primera vez apareció en el mundo web en el framework Ruby on Rails. En los últimos años, se lo ha utilizado como una manera de manejar el aumento en la richness y complejidad de client-side web también, en donde aparece Angular.
 La clave es cumplir con la separaci´n de responsabilidades, en el que el modelo de una aplicación esta desacoplado de la lógica de negocio y de presentación. En front end, esto significa separar la data, la lógica que opera sobre esos datos y los elementos html usados para mostrarlos.
 En Angular, sin embargo, este patrón es llevado un poco más allá a lo que se conoce como MV* (Model - view- whatever). 
-Por un lado tenemos el modelo (var firstName = ‘Tony’) y por otro la view (<h1>Tony</h1>). Y Angular permite que estos dos estén atados entre si. Puede ser mediante controllers, View Models, o lo que sea. Nosotros vamos a basarnos en el MVC.
+Por un lado tenemos el modelo ```(var firstName = ‘Tony’)``` y por otro la view ```(<h1>Tony</h1>)```. Y Angular permite que estos dos estén atados entre si. Puede ser mediante controllers, View Models, o lo que sea. Nosotros vamos a basarnos en el MVC.
 
 ###Models
 Contienen los datos con los que los usuarios interactúan. hay dos tipos: 
