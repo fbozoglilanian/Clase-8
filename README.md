@@ -38,13 +38,16 @@ Por un lado tenemos el modelo ```(var firstName = ‘Tony’)``` y por otro la v
 Contienen los datos con los que los usuarios interactúan. hay dos tipos: 
     - View Models: representan datos que se pasan del controller a la view.
     - Domain Models: representan los datos en el dominio de negocio, junto a operaciones, transformaciones y reglas para crear ordenar y manipular esa data, No se incluye lógica en el model.
-The model in an application built using the MVC pattern should
-Contain the domain data 
-Contain the logic for creating, managing, and modifying the domain data (even if that means executing remote logic via web services) 
-Provide a clean API that exposes the model data and operations on it The model should not 
-Expose details of how the model data is obtained or managed (in other words, details of the data storage mechanism or the remote web service should not be exposed to controllers and views) 
-Contain logic that transforms the model based on user interaction (because this is the controller’s job) 
-Contain logic for displaying data to the user (this is the view’s job)
+
+El Modelo en una aplicación debería contener datos del dominio, y la lógica para crear, administrar, y modificar esos datos del dominio (incluso si eso implica ejecutar lógica remota, por ej: a través de Web Services -una API-).
+
+El Modelo entonces debería proveer una API limpia que expone datos y operaciones, pero NUNCA debería:
+
+1. exponer cómo el modelo obtiene/administra sus datos (en otras palabras, detalles de cómo s guarda el estado, o cómo se accede al Web service no deberían ser expuestos a los controllers o a las views).
+2. contener lógica que transforma el el estado del modelo en base a la interacción del usuario (eso es responsabilidad del controller)
+3. contener lógica que se encarga de mostrar los datos al usuario (eso es responsabilidad de la view)
+
+Es importante recordar que la idea de MVC, no es separar por un lado lógica y por otro lado datos. El objetivo del Patrón MVC, es el de dividir una aplicación en 3 áres funcionales, donde cada una puede contener tanto lógica como datos. El objetivo no es eliminar la lógica de los modelos, si no que más bien asegurar que el modelo solo tiene la lógica para crear y administrar los datos.
  
 Views:
 Las vistas de AngularJS se definen usando elementos HTML mejorados que generan html usando los data bindings y las directivas. Son estas directivas (elementos HTML mejorados que permiten generar html basados en el modelo) las que vuelven las vistas tan flexibles.
