@@ -1,6 +1,6 @@
-#Angular
+#AngularJS
 
-##¿Qué es angular?
+##¿Qué es Angular?
 
 La meta de angular es traer las herramientas y capacidades que han estado disponibles para el desarrollo de back-end al cliente web, facilitando el desarrollo, test y mantenimiento de aplicaciones web complejas y ricas en contenido.
 
