@@ -25,7 +25,7 @@ AngularJS logra sus mejores resultados cuando la aplicación a desarrollar se ac
  
 ##El problema que Angular quiere resolver
 
-Compljidad de manejar el DOM  y la lógica de una aplicación manualmente.
+Complejidad de manejar el DOM  y la lógica de una aplicación manualmente.
 
 ##MV*
 
