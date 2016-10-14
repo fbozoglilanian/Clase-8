@@ -104,9 +104,6 @@ Es un concepto utilizado para referir a la sincronización existente entre el Mo
 
 Usualmente, como dijimos, el DataModel es una colección de datos disponibles para nuestra app. Cuando se producen cambios en el modelo, la vista refleja el cambio, y cuando se producen cambios en la vista, el modelo se actualiza en consecuencia. Esto pasa inmediatamente y automáticamente, asegurándose de que el modelo y la vista estén actualizados todo el tiempo
 
-Data Model
-AngularJS applications usually have a data model. The data model is a collection of data available for the application.
-
 Por ejemplo:
 
 ```javascript
