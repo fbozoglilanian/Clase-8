@@ -49,25 +49,24 @@ El Modelo entonces debería proveer una API limpia que expone datos y operacione
 
 Es importante recordar que la idea de MVC, no es separar por un lado lógica y por otro lado datos. El objetivo del Patrón MVC, es el de dividir una aplicación en 3 áres funcionales, donde cada una puede contener tanto lógica como datos. El objetivo no es eliminar la lógica de los modelos, si no que más bien asegurar que el modelo solo tiene la lógica para crear y administrar los datos.
  
-Views:
+###Views:
 Las vistas de AngularJS se definen usando elementos HTML mejorados que generan html usando los data bindings y las directivas. Son estas directivas (elementos HTML mejorados que permiten generar html basados en el modelo) las que vuelven las vistas tan flexibles.
 Las vistas deberían contener: 
     Lógica y Maquetación requerida para presentar la data al usuario.
 
-Controllers:
+###Controllers:
 Son el tejido conector de una aplicación Angular, actuando como conductos entre el modelo de datos y las views. Los controllers agregan lógica de dominio (comportamiento) a scopes. 
 Un controller debería:
     tener la lógica requerida para inicializar el scope.
     Tener la lógica/comportamiento requerido por la vista para presentar el scope.
     Tener la lógica/comportamiento requerido para actualizar el scope basado en la interacción con el usuario.
 
-View Data:
+###View Data:
 
 El modelo de dominio no es el único conjunto de datos en una aplicación. Controllers pueden crear view data (view model) para simplificar la definición de las vistas. No es persistente y es creada sintetizando algún aspecto del modelo de dominio o en respuesta a la interacción del usuario. 
 
-Modules
+##Moduless en Angular
 
-Module:
 Son el componente de más alto nivel de aplicaciones AngularJS. Si bien es posible construir aplicaciones angular simples sin necesidad de referenciar modulos, esto puede volverse complejo, y terminamos teniendo que reescribir toda la aplicación.
 Tienen tres funciones:
     Asociar la aplicación Angular con una región de un documento HTML
