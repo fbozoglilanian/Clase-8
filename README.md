@@ -66,20 +66,21 @@ Un controller debería:
 
 El modelo de dominio no es el único conjunto de datos en una aplicación. Controllers pueden crear view data (view model) para simplificar la definición de las vistas. No es persistente y es creada sintetizando algún aspecto del modelo de dominio o en respuesta a la interacción del usuario. 
 
-##Moduless en Angular
+##Modules en Angular
 
 Son el componente de más alto nivel de aplicaciones AngularJS. Si bien es posible construir aplicaciones angular simples sin necesidad de referenciar modulos, esto puede volverse complejo, y terminamos teniendo que reescribir toda la aplicación.
+
 Tienen tres funciones:
-    Asociar la aplicación Angular con una región de un documento HTML
-    Actuar como portal a algunas funcionalidades clave del framework.
-    Ayudar a organizar el código y componentes en una aplicación Angular
 
-Primer App con Web API y Angular. -> No dejar que escriban al mismo tiempo, copiando código, sino que ir explicando mientras se va escribiendo lo que se está haciendo.
+1.   Asociar la aplicación Angular con una región de un documento HTML
+2.   Actuar como portal a algunas funcionalidades clave del framework.
+3.   Ayudar a organizar el código y componentes en una aplicación Angular
 
-Usar http://plnkr.co
+Antes de pasar a la próxima sección:
 
-ir a angularjs.org/develop download y mostrar el código js. explicar diferencia entre min y no min.
-ir a getbootstrap.com Explicar qué es bootstrap y como usarlo.
+1.   Ir a angularjs.org/develop download y ver el código js.Ver diferencia entre min y no min.
+2.   Ir a getbootstrap.com Explicar qué es bootstrap y como usarlo.
+3.   Usar http://plnkr.co
 
 Pasos para la aplicación:
 
@@ -96,7 +97,6 @@ y atarlo con
 </div>
 
 Entonces el controller va a controlar lo que pase adentro de ese div.
-
 
 ##Ejercicio Angular
 
