@@ -4,8 +4,8 @@
     var tresanaApp = angular.module('Tresana');
 
     tresanaApp.controller('Tasks.Controller', function() {
+        
         var ctrl = this;
-
         ctrl.tasks = [
             {
                 Id: 3,
